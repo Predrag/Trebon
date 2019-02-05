@@ -5,7 +5,9 @@ import pandas as pd
 from datetime import datetime
 
 
-class Nacitanie_dat:
+class Nacitanie_dat():
+
+
     def __init__(self, vlnova_dlzka):
         self.txt_subory = os.getcwd() + "\\*.txt"
         self.vlnova_dlzka = vlnova_dlzka
@@ -53,27 +55,19 @@ class Nacitanie_dat:
         nazvy = list()
         nazvy_suborov = [x for x in self.nacitanie_txt_suborov()]
         for j in nazvy_suborov:
-            # nazov = j[-17] + j[-16] + j[-15] + j[-14] + j[-13] + j[-12] + j[-11] + j[-10] + j[-9] + j[-8] + j[-7] + j[-6] + j[-5]
             nazov = j[-17:-4]
             nazvy.append(nazov)
 
         slovnik_s_datami = dict()
         pocitadlo = 0
-
         for i in nazvy:
             slovnik_s_datami[i] = self.rozdelenie_data_frejmov_na_mensie_celky()[pocitadlo]
             pocitadlo += 1
         return slovnik_s_datami
 
-
-
-
-
-
-
-
-a = Nacitanie_dat(682)
+a = Nacitanie_dat(750)
 # print(a.rozdelenie_data_frejmov_na_mensie_celky())
 # print(a.priemer())
-print(a.vlozenie_parcialnych_data_frejmov_do_slovnikov())
+# print(a.vlozenie_parcialnych_data_frejmov_do_slovnikov())
 # print(a.nacitanie_txt_suborov())
+
