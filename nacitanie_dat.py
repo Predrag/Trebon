@@ -39,7 +39,6 @@ class Nacitanie_dat():
         # print(self.ocistenie_txt_suborov())
         for i in self.ocistenie_txt_suborov():
             s = i[i.Wavelength == self.vlnova_dlzka]
-            # f = s.Abs
             zoznam_dat_so_spravnymi_vlnovymi_dlzkami.append(s)
 
         return zoznam_dat_so_spravnymi_vlnovymi_dlzkami
