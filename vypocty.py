@@ -60,7 +60,7 @@ class Statistika(Nacitanie_dat):
                 da = pd.DataFrame(ds)
                 dc = da.where(ds['Abs'] < 1.996)
 
-                dc['Cas'] = 0
+                dc['Cas'] = 2
 
                 dc.plot(x='Cas', y='Abs')
                 # plt.show()
