@@ -1,12 +1,9 @@
 import glob
 import os
-import numpy as np
 import pandas as pd
-from datetime import datetime
 
 
 class Nacitanie_dat():
-
 
     def __init__(self, vlnova_dlzka):
         self.txt_subory = os.getcwd() + "\\*.txt"
@@ -18,25 +15,17 @@ class Nacitanie_dat():
             txt_subory.append(file)
         return txt_subory
 
-    # def zoradenie_podla_datumu(self):
-    #     zoznam_datumov = list()
-    #     for kazdy_datum in self.nacitanie_txt_suborov():
-    #         datum_parser = kazdy_datum[-17:-7]
-    #         datum = datetime.strptime(datum_parser, '%Y-%m-%d')
-    #         zoznam_datumov.append(datum + kazdy_datum[-1:-6])
-    #     return zoznam_datumov
-
     def ocistenie_txt_suborov(self):
         data_list = list()
         for data_file in self.nacitanie_txt_suborov():
             data = pd.read_table(data_file, sep='\t', skiprows=2, decimal=',', usecols=[6, 7])
             data_list.append(data)
-            # print(data)
+
         return data_list
 
     def vybratie_spravnej_vlnovej_dlzky(self):
         zoznam_dat_so_spravnymi_vlnovymi_dlzkami = list()
-        # print(self.ocistenie_txt_suborov())
+
         for i in self.ocistenie_txt_suborov():
             s = i[i.Wavelength == self.vlnova_dlzka]
             zoznam_dat_so_spravnymi_vlnovymi_dlzkami.append(s)
@@ -51,19 +40,6 @@ class Nacitanie_dat():
 
         return viacere_rozdelene_data_frejmy
 
-    # def vlozenie_parcialnych_data_frejmov_do_slovnikov(self):
-    #     nazvy = list()
-    #     nazvy_suborov = [x for x in self.nacitanie_txt_suborov()]
-    #     for j in nazvy_suborov:
-    #         nazov = j[-17:-4]
-    #         nazvy.append(nazov)
-    #
-    #     slovnik_s_datami = dict()
-    #     pocitadlo = 0
-    #     for i in nazvy:
-    #         slovnik_s_datami[i] = self.rozdelenie_data_frejmov_na_mensie_celky()[pocitadlo]
-    #         pocitadlo += 1
-    #     return slovnik_s_datami
 
 a = Nacitanie_dat(750)
 # print(a.rozdelenie_data_frejmov_na_mensie_celky())
@@ -72,4 +48,3 @@ a = Nacitanie_dat(750)
 # print(a.nacitanie_txt_suborov())
 # print(a.ocistenie_txt_suborov())
 # print(a.vybratie_spravnej_vlnovej_dlzky())
-
