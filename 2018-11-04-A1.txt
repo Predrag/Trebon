@@ -1,4 +1,4 @@
-Results of Photometric1
+Results of Photometric1B
 
 Plate	Well	Type	Group	Sample	Meas. time [s]	Abs	Wavelength	
 1	 B02	Unknown	Assay	Sce_0010 1/6	0	0,270609	750	
